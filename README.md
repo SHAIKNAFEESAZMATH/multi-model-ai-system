@@ -52,6 +52,7 @@ Measures response time of each model.
 
 This project is designed to work with:
 
+* **Ollama**
 * **Mistral**
 * **Phi-3**
 
