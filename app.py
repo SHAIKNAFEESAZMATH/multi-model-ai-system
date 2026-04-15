@@ -327,22 +327,127 @@ elif page == "⚔️ AI Debate":
         messages = chats.get(key, [])
         messages.append({"role":"user","content":prompt})
 
-        r1 = run_model("llama3",prompt)[1]
-        r2 = run_model("mistral",r1)[1]
-        r3 = run_model("phi3",r2)[1]
+        # 🔥 ROUND 1: INITIAL ANSWERS
+        r1 = run_model("llama3", prompt)[1]
+        r2 = run_model("mistral", prompt)[1]
+        r3 = run_model("phi3", prompt)[1]
 
-        st.write("### Llama3")
+        st.write("### 🧠 Round 1: Initial Answers")
+        st.write("**Llama3:**")
         st.write(r1)
-        st.write("### Mistral")
+
+        st.write("**Mistral:**")
         st.write(r2)
-        st.write("### Final")
+
+        st.write("**Phi3:**")
         st.write(r3)
 
-        full_output = f"### Llama3\n{r1}\n\n### Mistral\n{r2}\n\n### Final\n{r3}"
+        # 🔥 ROUND 2: DEBATE
+        debate_prompt = f"""
+Question: {prompt}
+
+Llama3 said:
+{r1}
+
+Mistral said:
+{r2}
+
+Phi3 said:
+{r3}
+
+Now respond to each other. Point out mistakes, improve ideas, and debate.
+"""
+
+        d1 = run_model("llama3", debate_prompt)[1]
+        d2 = run_model("mistral", debate_prompt)[1]
+        d3 = run_model("phi3", debate_prompt)[1]
+
+        st.write("### ⚔️ Round 2: Debate")
+        st.write("**Llama3:**")
+        st.write(d1)
+
+        st.write("**Mistral:**")
+        st.write(d2)
+
+        st.write("**Phi3:**")
+        st.write(d3)
+
+        # 🔥 JUDGE (WHO WON THE DEBATE)
+        judge_prompt = f"""
+Question: {prompt}
+
+Debate responses:
+
+Llama3:
+{d1}
+
+Mistral:
+{d2}
+
+Phi3:
+{d3}
+
+Which model gave the best reasoning and answer?
+Return ONLY the model name (llama3, mistral, or phi3).
+"""
+
+        raw_winner = run_model("llama3", judge_prompt)[1].lower()
+
+        if "llama" in raw_winner:
+            winner = "llama3"
+        elif "mistral" in raw_winner:
+            winner = "mistral"
+        elif "phi" in raw_winner:
+            winner = "phi3"
+        else:
+            winner = "llama3"  # fallback
+
+        st.success(f"🏆 Debate Winner: {winner}")
+
+        # 🔥 UPDATE LEADERBOARD
+        leaderboard = load(LEADERBOARD, {m:0 for m in MODELS})
+
+        if winner in leaderboard:
+            leaderboard[winner] += 1
+        else:
+            leaderboard[winner] = 1
+
+        save(LEADERBOARD, leaderboard)
+
+        # 🔥 SAVE FULL OUTPUT
+        full_output = f"""
+### 🧠 Round 1
+
+Llama3:
+{r1}
+
+Mistral:
+{r2}
+
+Phi3:
+{r3}
+
+---
+
+### ⚔️ Round 2
+
+Llama3:
+{d1}
+
+Mistral:
+{d2}
+
+Phi3:
+{d3}
+
+---
+
+🏆 Debate Winner: {winner}
+"""
 
         messages.append({"role":"assistant","content":full_output})
         chats[key] = messages
-        save(FILES["Debate"],chats)
+        save(FILES["Debate"], chats)
 
 # =========================
 # DOCUMENT CHAT
