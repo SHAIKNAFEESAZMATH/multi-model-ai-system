@@ -1,3 +1,7 @@
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 # 🚀 Multi-Model AI System (Streamlit)
 
 ## 🧠 Overview
@@ -270,6 +274,16 @@ multi-model-ai-system/
 * Cloud deployment
 
 ---
+## 📸 Screenshots
+
+### 🖥️ Chat Interface
+![Chat](screenshots/chat.png)
+
+### 🧠 AI Debate
+![Debate](screenshots/debate.png)
+
+### 🏆 Leaderboard
+![Leaderboard](screenshots/leaderboard.png)
 
 ## 📄 License
 
