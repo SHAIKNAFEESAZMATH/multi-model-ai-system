@@ -11,17 +11,18 @@
 
 ## 🧠 Overview
 
-The **Multi-Model AI System** is an advanced Streamlit-based application designed to compare, evaluate, and enhance responses from multiple AI models in a unified interface.
+The **Multi-Model AI System** is a Streamlit-based application that allows users to interact with, compare, and evaluate multiple AI models in one place.
 
-Unlike traditional chat applications, this system enables:
+This project goes beyond a simple chatbot by introducing:
 
-* Multi-model interaction
-* AI-to-AI debate
-* Automated evaluation (AI Judge)
-* Response refinement
-* Retrieval-Augmented Generation (RAG)
+* 🤖 Multi-model interaction
+* 🧠 AI-to-AI debate
+* ⚖️ AI Judge evaluation
+* 🔍 Retrieval-Augmented Generation (RAG)
+* 🏆 Leaderboard tracking
+* ⚡ Performance monitoring
 
-This project demonstrates how combining multiple AI systems can produce **more accurate, diverse, and intelligent outputs**.
+It demonstrates how combining multiple AI models can produce **better and more reliable outputs**.
 
 ---
 
@@ -29,7 +30,7 @@ This project demonstrates how combining multiple AI systems can produce **more a
 
 ### 🤖 Multi-Model Chat
 
-Interact with multiple models simultaneously and compare outputs in real time.
+Interact with multiple AI models simultaneously and compare responses.
 
 ### 🧠 AI Debate System
 
@@ -37,19 +38,19 @@ Models debate each other to improve answer quality.
 
 ### ⚖️ AI Judge
 
-Automatically evaluates and ranks model responses.
+Automatically evaluates and ranks responses.
 
-### 🔍 RAG (Retrieval-Augmented Generation)
+### 🔍 RAG System
 
-Enhances responses using external document knowledge.
+Uses external documents to improve factual accuracy.
 
 ### 🏆 Leaderboard
 
-Tracks model performance using stored metrics.
+Tracks performance of models.
 
 ### ⚡ Speed Tracking
 
-Measures response latency across models.
+Measures response time.
 
 ---
 
@@ -69,45 +70,59 @@ Measures response latency across models.
 
 ---
 
-## ⚙️ Installation & Setup
+## ⚙️ Installation & Setup (Complete Guide)
 
-### 1. Clone Repository
+Follow these steps to run the project locally.
+
+---
+
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/multi-model-ai-system.git
 cd multi-model-ai-system
 ```
 
-### 2. Install Dependencies
+---
+
+### 2️⃣ Create a Virtual Environment (Recommended)
+
+```bash
+python -m venv venv
+```
+
+Activate it:
+
+**Windows:**
+
+```bash
+venv\Scripts\activate
+```
+
+**Mac/Linux:**
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+### 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run the App
-
-```bash
-streamlit run app.py
-```
-
 ---
 
-## 🤖 Default Models
+### 4️⃣ Install and Setup Ollama (Required)
 
-This project is optimized for:
+This project uses local AI models via Ollama.
 
-* **Ollama**
-* **Mistral**
-* **Phi-3**
+1. Download and install Ollama from:
+   https://ollama.com
 
-These models are lightweight and suitable for local execution.
-
----
-
-## 📥 Model Setup (Using Ollama)
-
-1. Install Ollama
-2. Pull models:
+2. Pull required models:
 
 ```bash
 ollama pull mistral
@@ -120,9 +135,29 @@ ollama pull phi3
 ollama run mistral
 ```
 
+If the model responds correctly, setup is complete ✅
+
 ---
 
-## 🔧 Changing Models
+### 5️⃣ Run the Streamlit App
+
+```bash
+streamlit run app.py
+```
+
+---
+
+### 6️⃣ Open in Browser
+
+If it doesn’t open automatically:
+
+```
+http://localhost:8501
+```
+
+---
+
+## 🔁 Changing Models
 
 You can easily switch models.
 
@@ -134,23 +169,39 @@ You can easily switch models.
 model_name = "mistral"
 ```
 
-👉 Replace with:
+### Step 3: Replace with another model
 
 ```python
 model_name = "llama3"
 ```
 
-### Step 3: Download new model
+### Step 4: Download new model
 
 ```bash
 ollama pull llama3
 ```
 
-### Step 4: Restart app
+### Step 5: Restart the app
 
 ```bash
 streamlit run app.py
 ```
+
+---
+
+## 🤖 Default Models
+
+This project is configured to use:
+
+* **Ollama**
+* **Mistral**
+* **Phi-3**
+
+These models are:
+
+* Lightweight
+* Fast
+* Suitable for local usage
 
 ---
 
@@ -180,27 +231,27 @@ multi-model-ai-system/
 
 ## 📊 Data Files
 
-* `debate.json` → Stores debates
+* `debate.json` → Stores debate interactions
 * `doc.json` → RAG documents
 * `rank.json` → Rankings
-* `refine.json` → Refined outputs
+* `refine.json` → Refined responses
 
 ---
 
 ## ⚠️ Important Notes
 
 * Local models must be installed separately
-* `.env` files should NOT be uploaded
-* Large model files are excluded
-* Some features depend on model availability
+* Do NOT upload `.env` files
+* Large model files are not included
+* Ensure Ollama is running before using the app
 
 ---
 
 ## 🛠️ Customization
 
-* Add new models in `models.py`
+* Add models in `models.py`
 * Modify evaluation in `evaluator.py`
-* Expand RAG using `doc.json`
+* Improve RAG via `doc.json`
 * Adjust token limits for better output
 
 ---
@@ -228,8 +279,8 @@ multi-model-ai-system/
 
 * Web-based UI (no Streamlit)
 * More model integrations
-* Improved evaluation metrics
-* Better UI/UX
+* Better evaluation metrics
+* UI/UX improvements
 
 ---
 
