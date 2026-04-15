@@ -1,128 +1,88 @@
+# 🚀 Multi-Model AI System
+
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
 ![Status](https://img.shields.io/badge/Status-Active-success)
+![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-black)
+![Mistral](https://img.shields.io/badge/Mistral-Model-orange)
+![Phi-3](https://img.shields.io/badge/Phi--3-Model-blue)
 
-# 🚀 Multi-Model AI System (Streamlit)
+---
 
 ## 🧠 Overview
 
-This project is a **Multi-Model AI System** built using Streamlit that allows users to interact with, compare, and evaluate multiple AI models within a single interface.
+The **Multi-Model AI System** is an advanced Streamlit-based application designed to compare, evaluate, and enhance responses from multiple AI models in a unified interface.
 
-Unlike a basic chatbot, this system introduces **multi-agent intelligence**, where models can:
+Unlike traditional chat applications, this system enables:
 
-* Respond independently
-* Debate with each other
-* Be evaluated by an AI Judge
-* Improve responses using refinement logic
-* Use external knowledge via RAG (Retrieval-Augmented Generation)
+* Multi-model interaction
+* AI-to-AI debate
+* Automated evaluation (AI Judge)
+* Response refinement
+* Retrieval-Augmented Generation (RAG)
 
-The goal of this project is to explore how different AI models perform under the same prompt and how combining them can lead to better outputs.
+This project demonstrates how combining multiple AI systems can produce **more accurate, diverse, and intelligent outputs**.
 
 ---
 
-## ⚙️ Core Capabilities
+## ✨ Key Features
 
 ### 🤖 Multi-Model Chat
 
-Interact with multiple AI models simultaneously and compare their outputs in real-time.
+Interact with multiple models simultaneously and compare outputs in real time.
 
 ### 🧠 AI Debate System
 
-Models can engage in a structured debate to refine answers and challenge each other.
+Models debate each other to improve answer quality.
 
 ### ⚖️ AI Judge
 
-An evaluation system that scores and ranks responses based on quality.
+Automatically evaluates and ranks model responses.
 
 ### 🔍 RAG (Retrieval-Augmented Generation)
 
-Enhances answers using external documents stored locally.
+Enhances responses using external document knowledge.
 
-### 🏆 Leaderboard System
+### 🏆 Leaderboard
 
-Tracks performance of models using stored metrics.
+Tracks model performance using stored metrics.
 
 ### ⚡ Speed Tracking
 
-Measures response time of each model.
+Measures response latency across models.
 
 ---
 
-## 🤖 Preferred Models (Default Setup)
+## 📸 Screenshots
 
-This project is designed to work with:
+### 🖥️ Chat Interface
 
-* **Ollama**
-* **Mistral**
-* **Phi-3**
+![Chat](screenshots/chat.png)
 
-These models were chosen because they are:
+### 🧠 AI Debate
 
-* Lightweight
-* Fast
-* Capable of running locally (depending on setup)
+![Debate](screenshots/debate.png)
 
----
+### 🏆 Leaderboard
 
-## 📥 Downloading Models
-
-### Option 1: Using Ollama (Recommended)
-
-1. Install Ollama:
-
-   * Visit: https://ollama.com
-   * Download and install
-
-2. Pull models:
-
-```bash
-ollama pull mistral
-ollama pull phi3
-```
-
-3. Run a model (test):
-
-```bash
-ollama run mistral
-```
+![Leaderboard](screenshots/leaderboard.png)
 
 ---
 
-### Option 2: Using Hugging Face
+## ⚙️ Installation & Setup
 
-1. Install transformers:
-
-```bash
-pip install transformers torch
-```
-
-2. Example models:
-
-* mistralai/Mistral-7B-Instruct
-* microsoft/phi-3-mini
-
-3. Load them in `models.py`
-
----
-
-## ▶️ Installation & Setup
-
-### 1. Clone the Repository
+### 1. Clone Repository
 
 ```bash
 git clone https://github.com/your-username/multi-model-ai-system.git
 cd multi-model-ai-system
 ```
 
----
-
 ### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
-
----
 
 ### 3. Run the App
 
@@ -132,68 +92,65 @@ streamlit run app.py
 
 ---
 
-## 🔧 How to Change Models (IMPORTANT)
+## 🤖 Default Models
 
-If you want to use a different model instead of Mistral or Phi-3:
+This project is optimized for:
+
+* **Ollama**
+* **Mistral**
+* **Phi-3**
+
+These models are lightweight and suitable for local execution.
 
 ---
+
+## 📥 Model Setup (Using Ollama)
+
+1. Install Ollama
+2. Pull models:
+
+```bash
+ollama pull mistral
+ollama pull phi3
+```
+
+3. Test a model:
+
+```bash
+ollama run mistral
+```
+
+---
+
+## 🔧 Changing Models
+
+You can easily switch models.
 
 ### Step 1: Open `models.py`
 
-This file controls which models are used.
-
----
-
-### Step 2: Locate Model Configuration
-
-You will find something like:
+### Step 2: Change model name
 
 ```python
 model_name = "mistral"
 ```
 
----
-
-### Step 3: Replace with Your Model
-
-Examples:
+👉 Replace with:
 
 ```python
 model_name = "llama3"
 ```
 
-or
-
-```python
-model_name = "gemma"
-```
-
----
-
-### Step 4: Download the New Model
-
-Using Ollama:
+### Step 3: Download new model
 
 ```bash
 ollama pull llama3
 ```
 
----
-
-### Step 5: Restart the App
+### Step 4: Restart app
 
 ```bash
 streamlit run app.py
 ```
-
----
-
-## 🧠 How Models Are Used in This Project
-
-* `models.py` → Handles model loading and responses
-* `evaluator.py` → Judges responses
-* `rag_system.py` → Adds document-based context
-* `app.py` → Main UI and control logic
 
 ---
 
@@ -221,49 +178,49 @@ multi-model-ai-system/
 
 ---
 
-## 📊 Data Files Explanation
+## 📊 Data Files
 
-* `debate.json` → Stores debate interactions
-* `doc.json` → Documents used for RAG
-* `rank.json` → Ranking data
-* `refine.json` → Refinement outputs
+* `debate.json` → Stores debates
+* `doc.json` → RAG documents
+* `rank.json` → Rankings
+* `refine.json` → Refined outputs
 
 ---
 
 ## ⚠️ Important Notes
 
-* Do NOT upload `.env` files (API keys)
-* Large models are NOT included
-* Ensure models are installed locally before running
-* Some features may require internet (depending on model setup)
+* Local models must be installed separately
+* `.env` files should NOT be uploaded
+* Large model files are excluded
+* Some features depend on model availability
 
 ---
 
-## 🛠️ Customization Tips
+## 🛠️ Customization
 
-* Add more models in `models.py`
-* Modify evaluation logic in `evaluator.py`
-* Improve RAG by adding more documents to `doc.json`
-* Adjust token limits inside your model configuration
+* Add new models in `models.py`
+* Modify evaluation in `evaluator.py`
+* Expand RAG using `doc.json`
+* Adjust token limits for better output
 
 ---
 
 ## 🐛 Troubleshooting
 
-### App not running?
+### App not running
 
-* Check Python version (recommended 3.10+)
+* Check Python version (3.10+)
 * Reinstall dependencies
 
-### Model not responding?
+### Model not responding
 
-* Make sure model is installed
+* Ensure model is installed
 * Restart Ollama
 
-### Slow performance?
+### Slow performance
 
 * Use smaller models
-* Reduce token limits
+* Reduce token usage
 
 ---
 
@@ -271,27 +228,17 @@ multi-model-ai-system/
 
 * Web-based UI (no Streamlit)
 * More model integrations
-* Better evaluation metrics
-* Cloud deployment
+* Improved evaluation metrics
+* Better UI/UX
 
 ---
-## 📸 Screenshots
-
-### 🖥️ Chat Interface
-![Chat](screenshots/chat.png)
-
-### 🧠 AI Debate
-![Debate](screenshots/debate.png)
-
-### 🏆 Leaderboard
-![Leaderboard](screenshots/leaderboard.png)
 
 ## 📄 License
 
-This project is open-source and free to use.
+Open-source and free to use.
 
 ---
 
 ## 🙌 Acknowledgement
 
-Built as part of a multi-model AI experimentation system to explore collaborative intelligence between models.
+Built as a multi-model AI experimentation system exploring collaborative intelligence.
