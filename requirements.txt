@@ -1,0 +1,7 @@
+streamlit
+ollama, mistral, phi3
+pandas
+streamlit-option-menu
+pypdf
+sentence-transformers
+faiss-cpu
